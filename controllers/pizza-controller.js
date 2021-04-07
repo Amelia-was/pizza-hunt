@@ -16,7 +16,7 @@ const pizzaController = {
         Pizza.findOne({ _id: params.id })
             .then(dbPizzaData => {
                 // if no pizza found, send 404
-                if (!dbPizzaData) => {
+                if (!dbPizzaData) {
                     res.status(404).json({ message: 'No pizza found with this id!' });
                     return;
                 }
