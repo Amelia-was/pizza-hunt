@@ -50,7 +50,8 @@ const pizzaController = {
     updatePizza({ params, body }, res) {
         // new: true returns updated document instead of original
         // updateOne and updateMany update documents without returning them
-        Pizza.findOneAndUpdate({ _id: params.id }, body, { new: true })
+        // validators run automatically on create, need to specify for update
+        Pizza.findOneAndUpdate({ _id: params.id }, body, { new: true, runValidators: true })
             .then(dbPizzaData => {
                 if (!dbPizzaData) {
                     res.status(404).json({ message: 'No pizza found with this id! ' });
